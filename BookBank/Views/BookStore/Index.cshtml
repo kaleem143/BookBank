@@ -1,0 +1,29 @@
+﻿@model  IEnumerable <BookBank.Models.Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading" >
+    <h2>Book genres</h2>
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+       @foreach (var genre in Model)
+       {
+
+           <tr>
+               <td>
+                   <h4> @Html.ActionLink(genre.Name, "Browse", new { genre = genre.Name })</h4>
+               </td>
+              
+           </tr>
+       
+       }
+    </table>
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model BookBank.Models.Book
+
+@{
+    ViewBag.Title = "Album - " + Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+<p>
+  
+    <img src="~/images/@Model.AlbumArtUrl" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+</p>
+<p>
+  
+</p>
+
+<div id="album-details">
+    <p>
+        <em>Genre:</em>
+        @Model.Genre.Name
+    </p>
+    <p>
+        <em>Artist:</em>
+       @foreach (var author in Model.Releases)
+       {
+           @author.Author.Name
+       }
+    </p>
+    <p>
+        <em>Price:</em>
+        @String.Format("{0:F}", Model.Price)
+    </p>
+    <p class="button">
+        @Html.ActionLink("Add to cart", "AddToCart",
+        "ShoppingCart", new { id = Model.BookId }, "")
+    </p>
+</div>
+

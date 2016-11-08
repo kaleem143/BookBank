@@ -1,0 +1,81 @@
+﻿@model BookBank.ViewModels.BooksViewModel
+<script>
+
+</script>
+<br />
+<h3>Create New Book</h3>
+<br />
+
+@using (Html.BeginForm("Create", "BooksStoreManager", FormMethod.Post,
+                                        new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Genre</label>
+            <div class="col-md-10">
+                @Html.DropDownList("GenreId", null, htmlAttributes: new { @class = "form-control", Name = "Book.GenreId" }) @Html.ActionLink("Create New Genre", "NewGenre", "BooksStoreManager")
+                @Html.ValidationMessageFor(model => model.Book.Genre.GenreId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="control-label col-md-2">Author Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Author.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Author.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="control-label col-md-2">Book Title</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Book.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Book.Title, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.AlbumArtUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="bookimage" name="upload" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group has-feedback">
+            @Html.LabelFor(model => model.ReleaseDate.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReleaseDate.ReleaseDate, new { htmlAttributes = new { @class = "form-control datepicker", id = "release" } })
+
+                @Html.ValidationMessageFor(model => model.ReleaseDate.ReleaseDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Book.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Book.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $.getScript("../Scripts/bootstrap-datepicker.js", function () {
+        $(".datepicker").datepicker({
+
+        });
+    });
+</script>
+
+
+
+
