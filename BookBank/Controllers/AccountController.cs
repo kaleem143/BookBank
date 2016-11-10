@@ -51,6 +51,13 @@ namespace BookBank.Controllers
                 _userManager = value;
             }
         }
+        private void MigrateShoppingCart(string UserName)
+        {
+            // Associate shopping cart items with logged-in user
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            cart.MigrateCart(UserName);
+            Session[ShoppingCart.CartSessionKey] = UserName;
+        }
 
         //
         // GET: /Account/Login
@@ -70,6 +77,7 @@ namespace BookBank.Controllers
         {
             if (!ModelState.IsValid)
             {
+                MigrateShoppingCart(model.Email);
                 return View(model);
             }
 
@@ -156,7 +164,7 @@ namespace BookBank.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    MigrateShoppingCart(model.Email);
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

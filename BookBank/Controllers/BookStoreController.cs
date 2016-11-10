@@ -31,5 +31,11 @@ namespace BookBank.Controllers
             var book = db.Books.Find(id);
             return View(book);
         }
+        [ChildActionOnly]
+        public ActionResult GenreMenu()
+        {
+          var genreMenu=   db.Genres.ToList();
+            return PartialView(genreMenu);
+        }
     }
 }

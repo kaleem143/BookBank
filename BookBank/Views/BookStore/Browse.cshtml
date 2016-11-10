@@ -1,14 +1,71 @@
 ﻿@model BookBank.Models.Genre
 
 @{
-    ViewBag.Title = "Browse";
+    ViewBag.Title = "Browse Books";
 }
-<h2>Browsing Genre: @Model.Name</h2>
-<ul>
-    @foreach (var book in Model.Books)
-    {
-        <li>
-            @Html.ActionLink(book.Title, "Details", new { id = book.BookId })
-        </li>
-    }
-</ul>
+
+<div class="container">
+    <div class="col-lg-12">
+        <h1 class="page-header">@Model.Name Book</h1>
+</div>
+@foreach (var book in Model.Books)
+            {
+<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+    <a href="@Url.Action("Details", new { id = book.BookId })" class="thumbnail">
+        <img class="img-responsive" src="~/images/@book.AlbumArtUrl" alt="@book.Title">
+    </a>
+    <p>@book.Title</p>
+   
+</div>
+}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="container">
+    <h3><em>@Model.Name</em>Books</h3>
+
+    
+       
+
+                   
+    
+    <div class="row">
+   
+        <div class="col-xs-6 col-md-3">
+            @foreach (var book in Model.Books)
+            {
+                <a href="@Url.Action("Details", new { id = book.BookId })" class="thumbnail">
+                    <img src="~/images/@book.AlbumArtUrl" alt="@book.Title">
+                </a>
+
+                            <span>@book.Title</span>
+
+
+
+
+            }
+        </div>
+
+</div>
+    </div>*@

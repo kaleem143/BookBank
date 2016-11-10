@@ -16,3 +16,8 @@ D:\Mic Data\Projects\BookBank\BookBank\bin\BookBank.pdb
 D:\Mic Data\Projects\BookBank\BookBank\obj\Debug\BookBank.dll
 D:\Mic Data\Projects\BookBank\BookBank\obj\Debug\BookBank.pdb
 D:\Mic Data\Projects\BookBank\BookBank\obj\Debug\BookBank.csprojResolveAssemblyReference.cache
+D:\Mic Data\Projects\BookBank\BookBank\bin\log4net.dll
+D:\Mic Data\Projects\BookBank\BookBank\bin\PayPal.dll
+D:\Mic Data\Projects\BookBank\BookBank\bin\log4net.xml
+D:\Mic Data\Projects\BookBank\BookBank\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Mic Data\Projects\BookBank\BookBank\bin\PayPal.xml
