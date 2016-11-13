@@ -13,8 +13,9 @@ namespace BookBank.Controllers
         BookStoreEntities db = new BookStoreEntities();
         public IEnumerable<Genre> Get()
         {
+            return db.Genres.ToList();
+
            
-                return db.Genres.ToList();
             
         }
         public IEnumerable<Genre> Get(int id)
